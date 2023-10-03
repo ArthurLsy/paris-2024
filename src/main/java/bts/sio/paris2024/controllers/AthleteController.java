@@ -65,4 +65,12 @@ public class AthleteController {
         athleteservice.deleteAthlete(id);
         return new ModelAndView("redirect:/");
     }
+
+    @GetMapping("/showAthlete/{id}")
+    public ModelAndView showAthlete(@PathVariable final Long id) {
+        ModelAndView mav = new ModelAndView("/athletes/show");
+        mav.addObject("athlete", athleteservice.getAthlete(id).get());
+        return mav;
+    }
+
 }
